@@ -11,11 +11,11 @@ def home():
 
     X = [[0.265800, 0.594347, 73588.726663, 6.143813e+07, 20.00]]
     scaler = MinMaxScaler()
-    X_scaled = scaler.fit_transform(X)    
+    X_scaled = scaler.fit_transform(X)   
     prediction = loaded_model.predict(X_scaled)[0]
    
     response = app.response_class(
-        response=json.dumps({'isHazardous': bool(prediction)}),
+        response=json.dumps({'isHazardous': bool(prediction), 'xScaled': X_scaled}),
         status=200,
         mimetype='application/json'
     )
