@@ -14,7 +14,7 @@ loaded_model = pickle.load(open('model.sav', 'rb'))
 def home():
 
     X = [[0.265800, 0.594347, 73588.726663, 6.143813e+07, 20.00]]
-    scaler = MinMaxScaler()
+
     X_scaled = scaler.transform(X)   
     prediction = loaded_model.predict(X_scaled)[0]
    
