@@ -15,7 +15,11 @@ def home():
     prediction = loaded_model.predict(X_scaled)[0]
    
     response = app.response_class(
-        response=json.dumps({'isHazardous': bool(prediction), 'xScaled': str(X_scaled)}),
+        response=json.dumps({
+            'isHazardous': bool(prediction), 
+            'xScaled': str(X_scaled),
+            'prediction': str(prediction)
+          }),
         status=200,
         mimetype='application/json'
     )
