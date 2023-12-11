@@ -21,10 +21,13 @@ def home():
 
     X_scaled = scaler.transform(X)   
     prediction = loaded_model.predict(X_scaled)[0]
+    prediction_proba = loaded_model.predict_proba(X_scaled)[0]
    
     response = app.response_class(
         response=json.dumps({
             'isHazardous': bool(prediction), 
+            'probability_0': str(prediction_proba[0]),
+            'probability_1': str(prediction_proba[1]),
             'x': str(X),
             'xScaled': str(X_scaled),
             'prediction': str(prediction)
