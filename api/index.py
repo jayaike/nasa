@@ -1,5 +1,4 @@
 from flask import Flask, json, request
-from sklearn.preprocessing import MinMaxScaler
 import pickle
 import joblib
 
@@ -15,7 +14,7 @@ def home():
     relative_velocity = float(request.args.get('relative_velocity'))
     miss_distance = float(request.args.get('miss_distance'))
     magnitude = float(request.args.get('magnitude'))
-    
+
     X = [[min_diameter, max_diameter, relative_velocity, miss_distance, magnitude]]
 
     X_scaled = scaler.transform(X)   
