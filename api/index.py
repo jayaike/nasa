@@ -17,6 +17,7 @@ def home():
     response = app.response_class(
         response=json.dumps({
             'isHazardous': bool(prediction), 
+            'x': str(X),
             'xScaled': str(X_scaled),
             'prediction': str(prediction)
           }),
