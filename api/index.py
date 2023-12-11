@@ -7,6 +7,9 @@ import pandas as pd
 app = Flask(__name__)
 
 df = pd.read_csv('neo.csv')
+
+df = df.drop(columns=['id', 'name', 'orbiting_body', 'sentry_object'])
+df = df.dropna()
 df['hazardous'] = df['hazardous'].replace({False: 0, True: 1})
 
 X = df.drop("hazardous", axis=1)
