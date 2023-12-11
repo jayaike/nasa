@@ -1,4 +1,4 @@
-from flask import Flask, json
+from flask import Flask, json, request
 from sklearn.preprocessing import MinMaxScaler
 import pickle
 import joblib
@@ -10,8 +10,14 @@ loaded_model = pickle.load(open('model.sav', 'rb'))
 
 @app.route('/')
 def home():
+    min_diameter = float(request.args.get('min_diameter'))
+    max_diameter = float(request.args.get('max_diameter'))
+    relative_velocity = float(request.args.get('relative_velocity'))
+    miss_distance = float(request.args.get('miss_distance'))
+    magnitude = float(request.args.get('magnitude'))
+    
+    X = [[min_diameter, max_diameter, relative_velocity, miss_distance, magnitude]]
 
-    X = [[0.255009, 0.570217, 42737.733765, 4.627557e+07, 20.09]]
     X_scaled = scaler.transform(X)   
     prediction = loaded_model.predict(X_scaled)[0]
    
