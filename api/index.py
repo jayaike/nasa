@@ -1,20 +1,18 @@
 from flask import Flask, json
 from sklearn.preprocessing import MinMaxScaler
 import pickle
+import joblib
 from .data import data
 
 app = Flask(__name__)
 
-scaler = MinMaxScaler()
-scaler.fit(data)
-
+scaler = joblib.load('scaler.pkl')
 loaded_model = pickle.load(open('model.sav', 'rb'))
 
 @app.route('/')
 def home():
 
     X = [[0.265800, 0.594347, 73588.726663, 6.143813e+07, 20.00]]
-
     X_scaled = scaler.transform(X)   
     prediction = loaded_model.predict(X_scaled)[0]
    
