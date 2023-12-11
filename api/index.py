@@ -1,8 +1,10 @@
 from flask import Flask, json, request
 import pickle
 import joblib
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 scaler = joblib.load('scaler.pkl')
 loaded_model = pickle.load(open('model.sav', 'rb'))
