@@ -9,7 +9,7 @@ app = Flask(__name__)
 def home():
     loaded_model = pickle.load(open('model.sav', 'rb'))
 
-    X = [[0.255009, 0.570217, 42737.733765, 4.627557e+07, 20.09]]
+    X = [[0.265800, 0.594347, 73588.726663, 6.143813e+07, 20.00]]
     scaler = MinMaxScaler()
     X_scaled = scaler.fit_transform(X)    
     prediction = loaded_model.predict(X_scaled)[0]
