@@ -6,7 +6,7 @@ import pandas as pd
 
 app = Flask(__name__)
 
-df = pd.read_csv('neo.csv')
+df = pd.read_csv('https://res.cloudinary.com/jyst/raw/upload/v1702297955/neo.csv')
 
 df = df.drop(columns=['id', 'name', 'orbiting_body', 'sentry_object'])
 df = df.dropna()
