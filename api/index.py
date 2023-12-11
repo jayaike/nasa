@@ -2,7 +2,6 @@ from flask import Flask, json
 from sklearn.preprocessing import MinMaxScaler
 import pickle
 import joblib
-from .data import data
 
 app = Flask(__name__)
 
