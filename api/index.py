@@ -27,9 +27,7 @@ def home():
         response=json.dumps({
             'isHazardous': bool(prediction), 
             'probability': str(round(prediction_proba[prediction] * 100, 2)),
-            'x': str(X),
-            'xScaled': str(X_scaled),
-            'prediction': str(prediction)
+            'xScaled': X_scaled.tolist(),
           }),
         status=200,
         mimetype='application/json'
