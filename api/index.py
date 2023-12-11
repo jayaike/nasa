@@ -18,9 +18,10 @@ y = df["hazardous"]
 scaler = MinMaxScaler()
 scaler.fit(X)
 
+loaded_model = pickle.load(open('model.sav', 'rb'))
+
 @app.route('/')
 def home():
-    loaded_model = pickle.load(open('model.sav', 'rb'))
 
     X = np.array([[0.265800, 0.594347, 73588.726663, 6.143813e+07, 20.00]])
     scaler = MinMaxScaler(feature_range=())
